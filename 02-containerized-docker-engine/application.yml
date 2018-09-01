@@ -3,23 +3,17 @@ proxy:
   authentication: simple
   admin-groups: admins
   users:
-  - name: jack
-    password: password
+  - name: wim
+    password: maracuya
     groups: admins
-  - name: jeff
-    password: password
   docker:
-      internal-networking: true
+    internal-networking: true
   specs:
-  - id: 01_hello
-    display-name: Hello Application
-    description: Application which demonstrates the basics of a Shiny app
-    container-cmd: ["R", "-e", "shinyproxy::run_01_hello()"]
-    container-image: openanalytics/shinyproxy-demo
-    container-network: sp-example-net
-  - id: 06_tabsets
-    container-cmd: ["R", "-e", "shinyproxy::run_06_tabsets()"]
-    container-image: openanalytics/shinyproxy-demo
+  - id: dashboard
+    display-name: Maracuya Dashboard
+    description: Application to administre hours and invoices
+    container-cmd: ["R", "-e", "shiny::runApp('/root/app')"]
+    container-image: maracuya/my_image
     container-network: sp-example-net
 
 logging:
